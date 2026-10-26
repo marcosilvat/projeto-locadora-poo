@@ -1,14 +1,17 @@
 // Nome: Marco Antonio Teodoro da Silva
 // RA: a2888068
 
+// Classe mãe abstrata: reúne os dados comuns de Cliente e Atendente.
+// Nao pode ser instanciada diretamente, servindo de base para a heranca.
 public abstract class Pessoa {
 
     private int codigo;
     private String nome;
     private String cpf;
     private String telefone;
-    private Endereco endereco;
+    private Endereco endereco; // Composicao: toda Pessoa possui um Endereco
 
+    // Construtor padrao
     public Pessoa() {
         this.codigo = 0;
         this.nome = "";
@@ -17,6 +20,7 @@ public abstract class Pessoa {
         this.endereco = new Endereco();
     }
 
+    // Construtor sobrecarregado
     public Pessoa(int codigo, String nome, String cpf, String telefone, Endereco endereco) {
         this.codigo = codigo;
         this.nome = nome;
@@ -45,6 +49,7 @@ public abstract class Pessoa {
         return this.cpf;
     }
 
+    // Sem validacao de CPF conforme orientacao das instrucoes do projeto
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
@@ -65,8 +70,10 @@ public abstract class Pessoa {
         this.endereco = endereco;
     }
 
+    // Metodo abstrato que obriga as classes filhas (Cliente e Atendente) a informarem seu tipo
     public abstract String obterTipoPessoa();
 
+    // Monta um resumo com os dados basicos da pessoa
     public String exibirResumo() {
         String endTexto = (this.endereco != null) ? this.endereco.exibirEndereco() : "Nao informado";
         return "[" + obterTipoPessoa() + " #" + this.codigo + "] Nome: " + this.nome

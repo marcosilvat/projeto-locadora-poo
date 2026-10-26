@@ -1,10 +1,13 @@
 // Nome: Marco Antonio Teodoro da Silva
 // RA: a2888068
 
+// Unica classe do sistema com o metodo main().
+// Gerencia os vetores (arrays) de clientes, atendentes, jogos e locacoes.
 public class Principal {
 
     private static final int CAPACIDADE = 50;
 
+    // Vetores para armazenar os cadastros em memoria (sem uso de banco de dados)
     private static Cliente[] clientes = new Cliente[CAPACIDADE];
     private static int qtdClientes = 0;
 
@@ -17,8 +20,10 @@ public class Principal {
     private static Locacao[] locacoes = new Locacao[CAPACIDADE];
     private static int qtdLocacoes = 0;
 
+    // Controla se a carga de dados de exemplo (opcao 9) ja foi inserida nos vetores
     private static boolean dadosExemploPopulados = false;
 
+    // Objeto da classe Leitura para entrada de dados via teclado
     private static Leitura leitura = new Leitura();
 
     public static void main(String[] args) {
@@ -78,6 +83,7 @@ public class Principal {
         } while (opcao != 0);
     }
 
+    // Impede que o usuario passe pelos campos de texto apenas apertando Enter vazio
     private static String lerTextoObrigatorio(String rotulo) {
         while (true) {
             String entrada = leitura.entDados(rotulo).trim();
@@ -88,6 +94,7 @@ public class Principal {
         }
     }
 
+    // Le um numero inteiro garantindo que nao fique vazio e respeite o valor minimo
     private static int lerInteiro(String rotulo, int minimo) {
         while (true) {
             String entrada = leitura.entDados(rotulo).trim();
@@ -108,6 +115,7 @@ public class Principal {
         }
     }
 
+    // Le um valor decimal (double) aceitando tanto virgula quanto ponto
     private static double lerDouble(String rotulo, double minimo) {
         while (true) {
             String entrada = leitura.entDados(rotulo).trim().replace(',', '.');
@@ -128,6 +136,7 @@ public class Principal {
         }
     }
 
+    // Le respostas do tipo Sim/Nao ('s' ou 'n')
     private static boolean lerBooleano(String rotulo) {
         while (true) {
             String resp = leitura.entDados(rotulo).trim().toLowerCase();
@@ -141,6 +150,7 @@ public class Principal {
         }
     }
 
+    // Auxiliar para preencher o objeto Endereco (usado na composicao de Pessoa)
     private static Endereco lerEndereco() {
         Endereco end = new Endereco();
         end.setRua(lerTextoObrigatorio("  Rua: "));
@@ -216,6 +226,7 @@ public class Principal {
         String plataforma = lerTextoObrigatorio("Plataforma (PS5/Xbox/Switch/SNES): ");
         double valorDiaria = lerDouble("Valor da diaria (R$): ", 0.01);
 
+        // Instancia a classe filha correspondente usando polimorfismo na referencia Jogo
         Jogo novoJogo;
         if (tipo == 2) {
             String carcaca = lerTextoObrigatorio("Codigo da carcaca do cartucho: ");
@@ -347,6 +358,8 @@ public class Principal {
         System.out.println("Faturamento bruto total das locacoes: R$ " + String.format("%.2f", faturamentoTotal));
     }
 
+    // Opcao 9: Insere objetos de todas as classes filhas para testar o sistema completo
+    // mesmo que o usuario ja tenha feito cadastros manuais antes.
     private static void popularDadosDeTeste() {
         if (!dadosExemploPopulados) {
             if (qtdClientes + 2 <= CAPACIDADE && qtdAtendentes + 2 <= CAPACIDADE

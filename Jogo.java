@@ -1,6 +1,8 @@
 // Nome: Marco Antonio Teodoro da Silva
 // RA: a2888068
 
+// Classe abstrata Jogo que implementa a interface Calculavel.
+// Serve como superclasse para os diferentes tipos de midia fisica da locadora.
 public abstract class Jogo implements Calculavel {
 
     private int codigo;
@@ -9,6 +11,7 @@ public abstract class Jogo implements Calculavel {
     private String plataforma;
     private double valorDiaria;
 
+    // Construtor padrao
     public Jogo() {
         this.codigo = 0;
         this.titulo = "";
@@ -17,6 +20,7 @@ public abstract class Jogo implements Calculavel {
         this.valorDiaria = 0.0;
     }
 
+    // Construtor sobrecarregado
     public Jogo(int codigo, String titulo, String genero, String plataforma, double valorDiaria) {
         this.codigo = codigo;
         this.titulo = titulo;
@@ -65,6 +69,7 @@ public abstract class Jogo implements Calculavel {
         this.valorDiaria = valorDiaria;
     }
 
+    // Calcula o valor base multiplicando a diaria pela quantidade de dias locados
     @Override
     public double calcularValorBase(int dias) {
         if (dias <= 0) {
@@ -73,9 +78,11 @@ public abstract class Jogo implements Calculavel {
         return this.valorDiaria * dias;
     }
 
+    // Metodo abstrato: cada subclasse fisica calcula sua propria multa por dia de atraso (polimorfismo)
     @Override
     public abstract double calcularMultaPorDia();
 
+    // Retorna a descricao do tipo fisico da midia
     public abstract String obterTipoMidia();
 
     public String exibirResumo() {

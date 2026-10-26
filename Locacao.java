@@ -1,6 +1,8 @@
 // Nome: Marco Antonio Teodoro da Silva
 // RA: a2888068
 
+// Classe Locacao: relaciona o Cliente, o Atendente responsavel pelo atendimento e o Jogo alugado.
+// Calcula o valor final somando as diarias com a multa por dias de atraso (polimorfica conforme o Jogo).
 public class Locacao {
 
     private int codigoLocacao;
@@ -10,6 +12,7 @@ public class Locacao {
     private int diasLocados;
     private int diasAtraso;
 
+    // Construtor padrao
     public Locacao() {
         this.codigoLocacao = 0;
         this.cliente = null;
@@ -19,6 +22,7 @@ public class Locacao {
         this.diasAtraso = 0;
     }
 
+    // Construtor sobrecarregado
     public Locacao(int codigoLocacao, Cliente cliente, Atendente atendente, Jogo jogo,
             int diasLocados, int diasAtraso) {
         this.codigoLocacao = codigoLocacao;
@@ -77,6 +81,7 @@ public class Locacao {
         this.diasAtraso = diasAtraso;
     }
 
+    // Usa o polimorfismo de jogo.calcularMultaPorDia() para calcular a multa de acordo com a midia
     public double calcularValorMulta() {
         if (this.jogo == null || this.diasAtraso <= 0) {
             return 0.0;
@@ -84,6 +89,7 @@ public class Locacao {
         return this.diasAtraso * this.jogo.calcularMultaPorDia();
     }
 
+    // Soma o valor das diarias normais com a multa por atraso (se houver)
     public double calcularValorTotal() {
         if (this.jogo == null) {
             return 0.0;
@@ -91,6 +97,7 @@ public class Locacao {
         return this.jogo.calcularValorBase(this.diasLocados) + this.calcularValorMulta();
     }
 
+    // Calcula quanto o atendente responsavel recebe de comissao nessa locacao
     public double calcularComissaoAtendente() {
         if (this.atendente == null) {
             return 0.0;

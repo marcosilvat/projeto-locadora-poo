@@ -5,6 +5,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+// Classe separada apenas para leitura de dados do teclado,
+// mantendo a coesao alta conforme visto em aula.
 public class Leitura {
 
     public String entDados(String rotulo) {
@@ -15,7 +17,7 @@ public class Leitura {
         try {
             ret = buff.readLine();
         } catch (IOException ioe) {
-            System.out.println("\nErro de entrada de dados: " + ioe.getMessage());
+            System.out.println("\nErro na entrada de dados pelo teclado: " + ioe.getMessage());
         }
         return ret != null ? ret : "";
     }
