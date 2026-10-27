@@ -1,11 +1,8 @@
 // Nome: Marco Antonio Teodoro da Silva
 // RA: a2888068
 
-// Classe filha que representa uma Edicao de Colecionador fisica (box especial com itens colecionaveis).
-// Herda de Jogo ("JogoEdicaoColecionador e um tipo de Jogo").
 public class JogoEdicaoColecionador extends Jogo {
 
-    // Atributos especificos do box de colecionador
     private String numeroSerieEdicao;
     private String brindeFisicoIncluso;
     private double valorSeguroCaixa;
@@ -17,9 +14,8 @@ public class JogoEdicaoColecionador extends Jogo {
         this.valorSeguroCaixa = 0.0;
     }
 
-    public JogoEdicaoColecionador(int codigo, String titulo, String genero, String plataforma, double valorDiaria,
-            String numeroSerieEdicao, String brindeFisicoIncluso, double valorSeguroCaixa) {
-        super(codigo, titulo, genero, plataforma, valorDiaria);
+    public JogoEdicaoColecionador(int codigo, String titulo, String genero, String plataforma, double valorDiaria, String numeroSerieEdicao, String brindeFisicoIncluso, double valorSeguroCaixa) {
+        super();
         this.numeroSerieEdicao = numeroSerieEdicao;
         this.brindeFisicoIncluso = brindeFisicoIncluso;
         this.valorSeguroCaixa = valorSeguroCaixa;
@@ -49,7 +45,7 @@ public class JogoEdicaoColecionador extends Jogo {
         this.valorSeguroCaixa = valorSeguroCaixa;
     }
 
-    // Por ser um item raro de colecionador, a multa diaria e de 120% da diaria + 5% sobre o seguro da caixa
+    // Por ser um item raro de colecionador, a multa diaria é de 120% da diária + 5% sobre o seguro da caixa
     @Override
     public double calcularMultaPorDia() {
         return (this.getValorDiaria() * 1.20) + (this.valorSeguroCaixa * 0.05);

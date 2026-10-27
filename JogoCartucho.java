@@ -1,8 +1,6 @@
 // Nome: Marco Antonio Teodoro da Silva
 // RA: a2888068
 
-// Classe filha que representa um jogo em cartucho fisico (ex.: Nintendo Switch, Super Nintendo, etc.).
-// Herda de Jogo ("JogoCartucho e um tipo de Jogo").
 public class JogoCartucho extends Jogo {
 
     // Atributos proprios do cartucho fisico
@@ -19,7 +17,7 @@ public class JogoCartucho extends Jogo {
 
     public JogoCartucho(int codigo, String titulo, String genero, String plataforma, double valorDiaria,
             String codigoCarcaca, int capacidadeMb, boolean possuiCaixaProtetora) {
-        super(codigo, titulo, genero, plataforma, valorDiaria);
+        super();
         this.codigoCarcaca = codigoCarcaca;
         this.capacidadeMb = capacidadeMb;
         this.possuiCaixaProtetora = possuiCaixaProtetora;
@@ -49,7 +47,6 @@ public class JogoCartucho extends Jogo {
         this.possuiCaixaProtetora = possuiCaixaProtetora;
     }
 
-    // No cartucho fisico, a multa por dia de atraso e de 75% da diaria mais taxa de conservacao do estojo
     @Override
     public double calcularMultaPorDia() {
         double adicionalCaixa = this.possuiCaixaProtetora ? 2.50 : 1.00;

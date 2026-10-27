@@ -1,11 +1,8 @@
 // Nome: Marco Antonio Teodoro da Silva
 // RA: a2888068
 
-// Classe filha que representa um jogo em disco fisico (Blu-Ray ou DVD).
-// Herda de Jogo ("JogoMidiaOptica e um tipo de Jogo").
 public class JogoMidiaOptica extends Jogo {
 
-    // Atributos proprios da midia optica
     private String tipoDisco;
     private int quantidadeDiscos;
     private boolean possuiEncarteOriginal;
@@ -19,7 +16,7 @@ public class JogoMidiaOptica extends Jogo {
 
     public JogoMidiaOptica(int codigo, String titulo, String genero, String plataforma, double valorDiaria,
             String tipoDisco, int quantidadeDiscos, boolean possuiEncarteOriginal) {
-        super(codigo, titulo, genero, plataforma, valorDiaria);
+        super();
         this.tipoDisco = tipoDisco;
         this.quantidadeDiscos = quantidadeDiscos;
         this.possuiEncarteOriginal = possuiEncarteOriginal;
@@ -49,7 +46,7 @@ public class JogoMidiaOptica extends Jogo {
         this.possuiEncarteOriginal = possuiEncarteOriginal;
     }
 
-    // Na midia optica, a multa por dia de atraso equivale a 50% da diaria + R$ 1,50 por disco da caixa
+    // Na mídia óptica, a multa por dia de atraso equivale a 50% da diária + R$ 1,50 por disco da caixa
     @Override
     public double calcularMultaPorDia() {
         return (this.getValorDiaria() * 0.50) + (this.quantidadeDiscos * 1.50);

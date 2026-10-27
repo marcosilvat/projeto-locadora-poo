@@ -1,15 +1,13 @@
 // Nome: Marco Antonio Teodoro da Silva
 // RA: a2888068
 
-// Classe filha Cliente que herda de Pessoa ("Cliente e um tipo de Pessoa").
 public class Cliente extends Pessoa {
 
-    // Atributos especificos do cliente na locadora
     private String email;
     private String categoriaFidelidade;
     private int limiteJogosSimultaneos;
 
-    // Construtor padrao usando super() para inicializar a classe mae (reflexividade)
+    // Construtor usando reflexividade
     public Cliente() {
         super();
         this.email = "";
@@ -17,10 +15,10 @@ public class Cliente extends Pessoa {
         this.limiteJogosSimultaneos = 3;
     }
 
-    // Construtor sobrecarregado repassando os dados gerais para a superclasse Pessoa
+    // Sobrecarga
     public Cliente(int codigo, String nome, String cpf, String telefone, Endereco endereco,
             String email, String categoriaFidelidade, int limiteJogosSimultaneos) {
-        super(codigo, nome, cpf, telefone, endereco);
+        super();
         this.email = email;
         this.categoriaFidelidade = categoriaFidelidade;
         this.limiteJogosSimultaneos = limiteJogosSimultaneos;
@@ -50,13 +48,12 @@ public class Cliente extends Pessoa {
         this.limiteJogosSimultaneos = limiteJogosSimultaneos;
     }
 
-    // Sobrescrita (polimorfismo) do metodo abstrato da classe mae
+    // Sobrescrita
     @Override
     public String obterTipoPessoa() {
         return "Cliente";
     }
 
-    // Reaproveita o exibirResumo() da classe mae via super e adiciona os dados do cliente
     @Override
     public String exibirResumo() {
         return super.exibirResumo()

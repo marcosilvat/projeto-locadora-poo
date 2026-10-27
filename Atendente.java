@@ -1,16 +1,13 @@
 // Nome: Marco Antonio Teodoro da Silva
 // RA: a2888068
 
-// Classe filha Atendente que herda de Pessoa ("Atendente e um tipo de Pessoa").
-// Representa o funcionario responsavel por registrar cada locacao na loja.
 public class Atendente extends Pessoa {
 
-    // Atributos especificos do atendente
     private String matricula;
     private String turno;
     private double percentualComissao;
 
-    // Construtor padrao
+    // Default
     public Atendente() {
         super();
         this.matricula = "";
@@ -18,10 +15,10 @@ public class Atendente extends Pessoa {
         this.percentualComissao = 5.0;
     }
 
-    // Construtor sobrecarregado usando super(...)
+    // Sobrecarga
     public Atendente(int codigo, String nome, String cpf, String telefone, Endereco endereco,
             String matricula, String turno, double percentualComissao) {
-        super(codigo, nome, cpf, telefone, endereco);
+        super();
         this.matricula = matricula;
         this.turno = turno;
         this.percentualComissao = percentualComissao;

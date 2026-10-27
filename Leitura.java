@@ -5,8 +5,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-// Classe separada apenas para leitura de dados do teclado,
-// mantendo a coesao alta conforme visto em aula.
 public class Leitura {
 
     public String entDados(String rotulo) {
