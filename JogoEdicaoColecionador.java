@@ -7,18 +7,12 @@ public class JogoEdicaoColecionador extends Jogo {
     private String brindeFisicoIncluso;
     private double valorSeguroCaixa;
 
+    // Default
     public JogoEdicaoColecionador() {
         super();
         this.numeroSerieEdicao = "";
         this.brindeFisicoIncluso = "";
         this.valorSeguroCaixa = 0.0;
-    }
-
-    public JogoEdicaoColecionador(int codigo, String titulo, String genero, String plataforma, double valorDiaria, String numeroSerieEdicao, String brindeFisicoIncluso, double valorSeguroCaixa) {
-        super();
-        this.numeroSerieEdicao = numeroSerieEdicao;
-        this.brindeFisicoIncluso = brindeFisicoIncluso;
-        this.valorSeguroCaixa = valorSeguroCaixa;
     }
 
     public String getNumeroSerieEdicao() {
@@ -45,22 +39,15 @@ public class JogoEdicaoColecionador extends Jogo {
         this.valorSeguroCaixa = valorSeguroCaixa;
     }
 
-    // Por ser um item raro de colecionador, a multa diaria é de 120% da diária + 5% sobre o seguro da caixa
+    // Sobrescrita
     @Override
     public double calcularMultaPorDia() {
         return (this.getValorDiaria() * 1.20) + (this.valorSeguroCaixa * 0.05);
     }
 
+    // Sobrescrita
     @Override
     public String obterTipoMidia() {
         return "Edicao de Colecionador";
-    }
-
-    @Override
-    public String exibirResumo() {
-        return super.exibirResumo()
-                + " | Serie: " + this.numeroSerieEdicao
-                + " | Brinde Fisico: " + this.brindeFisicoIncluso
-                + " | Seguro: R$ " + String.format("%.2f", this.valorSeguroCaixa);
     }
 }

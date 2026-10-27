@@ -7,21 +7,12 @@ public class Cliente extends Pessoa {
     private String categoriaFidelidade;
     private int limiteJogosSimultaneos;
 
-    // Construtor usando reflexividade
+    // Default
     public Cliente() {
         super();
         this.email = "";
         this.categoriaFidelidade = "Padrao";
         this.limiteJogosSimultaneos = 3;
-    }
-
-    // Sobrecarga
-    public Cliente(int codigo, String nome, String cpf, String telefone, Endereco endereco,
-            String email, String categoriaFidelidade, int limiteJogosSimultaneos) {
-        super();
-        this.email = email;
-        this.categoriaFidelidade = categoriaFidelidade;
-        this.limiteJogosSimultaneos = limiteJogosSimultaneos;
     }
 
     public String getEmail() {
@@ -52,13 +43,5 @@ public class Cliente extends Pessoa {
     @Override
     public String obterTipoPessoa() {
         return "Cliente";
-    }
-
-    @Override
-    public String exibirResumo() {
-        return super.exibirResumo()
-                + " | E-mail: " + this.email
-                + " | Fidelidade: " + this.categoriaFidelidade
-                + " | Limite de Jogos: " + this.limiteJogosSimultaneos;
     }
 }

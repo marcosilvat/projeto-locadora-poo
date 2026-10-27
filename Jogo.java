@@ -18,15 +18,6 @@ public abstract class Jogo implements Calculavel {
         this.valorDiaria = 0.0;
     }
 
-    // Sobrecarga
-    public Jogo(int codigo, String titulo, String genero, String plataforma, double valorDiaria) {
-        this.codigo = codigo;
-        this.titulo = titulo;
-        this.genero = genero;
-        this.plataforma = plataforma;
-        this.valorDiaria = valorDiaria;
-    }
-
     public int getCodigo() {
         return this.codigo;
     }
@@ -67,6 +58,7 @@ public abstract class Jogo implements Calculavel {
         this.valorDiaria = valorDiaria;
     }
 
+    // Sobrescrita
     @Override
     public double calcularValorBase(int dias) {
         if (dias <= 0) {
@@ -75,14 +67,7 @@ public abstract class Jogo implements Calculavel {
         return this.valorDiaria * dias;
     }
 
-    @Override
     public abstract double calcularMultaPorDia();
+
     public abstract String obterTipoMidia();
-    public String exibirResumo() {
-        return "[Jogo #" + this.codigo + " - " + obterTipoMidia() + "] Titulo: " + this.titulo
-                + " | Genero: " + this.genero
-                + " | Plataforma: " + this.plataforma
-                + " | Diaria: R$ " + String.format("%.2f", this.valorDiaria)
-                + " | Multa/Dia Atraso: R$ " + String.format("%.2f", calcularMultaPorDia());
-    }
 }

@@ -3,24 +3,16 @@
 
 public class JogoCartucho extends Jogo {
 
-    // Atributos proprios do cartucho fisico
     private String codigoCarcaca;
     private int capacidadeMb;
     private boolean possuiCaixaProtetora;
 
+    // Default
     public JogoCartucho() {
         super();
         this.codigoCarcaca = "";
         this.capacidadeMb = 0;
         this.possuiCaixaProtetora = true;
-    }
-
-    public JogoCartucho(int codigo, String titulo, String genero, String plataforma, double valorDiaria,
-            String codigoCarcaca, int capacidadeMb, boolean possuiCaixaProtetora) {
-        super();
-        this.codigoCarcaca = codigoCarcaca;
-        this.capacidadeMb = capacidadeMb;
-        this.possuiCaixaProtetora = possuiCaixaProtetora;
     }
 
     public String getCodigoCarcaca() {
@@ -47,22 +39,16 @@ public class JogoCartucho extends Jogo {
         this.possuiCaixaProtetora = possuiCaixaProtetora;
     }
 
+    // Sobrescrita
     @Override
     public double calcularMultaPorDia() {
         double adicionalCaixa = this.possuiCaixaProtetora ? 2.50 : 1.00;
         return (this.getValorDiaria() * 0.75) + adicionalCaixa;
     }
 
+    // Sobrescrita
     @Override
     public String obterTipoMidia() {
         return "Cartucho Fisico";
-    }
-
-    @Override
-    public String exibirResumo() {
-        return super.exibirResumo()
-                + " | Carcaca: " + this.codigoCarcaca
-                + " | Capacidade: " + this.capacidadeMb + " MB"
-                + " | Caixa Protetora: " + (this.possuiCaixaProtetora ? "Sim" : "Nao");
     }
 }

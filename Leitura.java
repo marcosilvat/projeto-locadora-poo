@@ -7,6 +7,10 @@ import java.io.InputStreamReader;
 
 public class Leitura {
 
+    // Default
+    public Leitura() {
+    }
+
     public String entDados(String rotulo) {
         System.out.print(rotulo);
         InputStreamReader teclado = new InputStreamReader(System.in);

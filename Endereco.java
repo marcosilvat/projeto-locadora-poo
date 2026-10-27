@@ -14,13 +14,6 @@ public class Endereco {
         this.cidade = "";
     }
 
-    // Sobrecarga
-    public Endereco(String rua, int numero, String cidade) {
-        this.rua = rua;
-        this.numero = numero;
-        this.cidade = cidade;
-    }
-
     public String getRua() {
         return this.rua;
     }
@@ -43,9 +36,5 @@ public class Endereco {
 
     public void setCidade(String cidade) {
         this.cidade = cidade;
-    }
-
-    public String exibirEndereco() {
-        return this.rua + ", n. " + this.numero + " - " + this.cidade;
     }
 }

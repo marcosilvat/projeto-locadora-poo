@@ -15,15 +15,6 @@ public class Atendente extends Pessoa {
         this.percentualComissao = 5.0;
     }
 
-    // Sobrecarga
-    public Atendente(int codigo, String nome, String cpf, String telefone, Endereco endereco,
-            String matricula, String turno, double percentualComissao) {
-        super();
-        this.matricula = matricula;
-        this.turno = turno;
-        this.percentualComissao = percentualComissao;
-    }
-
     public String getMatricula() {
         return this.matricula;
     }
@@ -48,16 +39,9 @@ public class Atendente extends Pessoa {
         this.percentualComissao = percentualComissao;
     }
 
+    // Sobrescrita
     @Override
     public String obterTipoPessoa() {
         return "Atendente";
-    }
-
-    @Override
-    public String exibirResumo() {
-        return super.exibirResumo()
-                + " | Matricula: " + this.matricula
-                + " | Turno: " + this.turno
-                + " | Comissao: " + String.format("%.1f%%", this.percentualComissao);
     }
 }

@@ -18,15 +18,6 @@ public abstract class Pessoa {
         this.endereco = new Endereco();
     }
 
-    // Sobrecarega
-    public Pessoa(int codigo, String nome, String cpf, String telefone, Endereco endereco) {
-        this.codigo = codigo;
-        this.nome = nome;
-        this.cpf = cpf;
-        this.telefone = telefone;
-        this.endereco = endereco;
-    }
-
     public int getCodigo() {
         return this.codigo;
     }
@@ -68,11 +59,4 @@ public abstract class Pessoa {
     }
 
     public abstract String obterTipoPessoa();
-    public String exibirResumo() {
-        String endTexto = (this.endereco != null) ? this.endereco.exibirEndereco() : "Nao informado";
-        return "[" + obterTipoPessoa() + " #" + this.codigo + "] Nome: " + this.nome
-                + " | CPF: " + this.cpf
-                + " | Tel: " + this.telefone
-                + " | Endereco: " + endTexto;
-    }
 }

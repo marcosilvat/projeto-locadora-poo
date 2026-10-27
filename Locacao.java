@@ -13,21 +13,11 @@ public class Locacao {
     // Default
     public Locacao() {
         this.codigoLocacao = 0;
-        this.cliente = null;
-        this.atendente = null;
+        this.cliente = new Cliente();
+        this.atendente = new Atendente();
         this.jogo = null;
         this.diasLocados = 1;
         this.diasAtraso = 0;
-    }
-
-    // Sobrecarga
-    public Locacao(int codigoLocacao, Cliente cliente, Atendente atendente, Jogo jogo, int diasLocados, int diasAtraso) {
-        this.codigoLocacao = codigoLocacao;
-        this.cliente = cliente;
-        this.atendente = atendente;
-        this.jogo = jogo;
-        this.diasLocados = diasLocados;
-        this.diasAtraso = diasAtraso;
     }
 
     public int getCodigoLocacao() {
@@ -82,42 +72,20 @@ public class Locacao {
         if (this.jogo == null || this.diasAtraso <= 0) {
             return 0.0;
         }
-        return this.diasAtraso * this.jogo.calcularMultaPorDia();
+        return this.diasAtraso * this.getJogo().calcularMultaPorDia(); //Reflexividade
     }
 
     public double calcularValorTotal() {
         if (this.jogo == null) {
             return 0.0;
         }
-        return this.jogo.calcularValorBase(this.diasLocados) + this.calcularValorMulta();
+        return this.getJogo().calcularValorBase(this.diasLocados) + this.calcularValorMulta(); //Reflexividade
     }
 
     public double calcularComissaoAtendente() {
         if (this.atendente == null) {
             return 0.0;
         }
-        return this.calcularValorTotal() * (this.atendente.getPercentualComissao() / 100.0);
-    }
-
-    public String exibirResumo() {
-        String nomeCli = (this.cliente != null) ? this.cliente.getNome() : "N/A";
-        String nomeAtend = (this.atendente != null)
-                ? this.atendente.getNome() + " (Mat.: " + this.atendente.getMatricula() + ")"
-                : "N/A";
-        String tituloJogo = (this.jogo != null)
-                ? this.jogo.getTitulo() + " [" + this.jogo.obterTipoMidia() + "]"
-                : "N/A";
-        double valorBase = (this.jogo != null) ? this.jogo.calcularValorBase(this.diasLocados) : 0.0;
-
-        return "[Locacao #" + this.codigoLocacao + "]"
-                + "\n  -> Cliente: " + nomeCli
-                + "\n  -> Atendente Responsavel: " + nomeAtend
-                + "\n  -> Jogo Alugado: " + tituloJogo
-                + "\n  -> Dias Locados: " + this.diasLocados
-                + " | Dias de Atraso: " + this.diasAtraso
-                + "\n  -> Valor Diarias: R$ " + String.format("%.2f", valorBase)
-                + " | Multa por Atraso: R$ " + String.format("%.2f", this.calcularValorMulta())
-                + " | VALOR TOTAL: R$ " + String.format("%.2f", this.calcularValorTotal())
-                + " | Comissao do Atendente: R$ " + String.format("%.2f", this.calcularComissaoAtendente());
+        return this.calcularValorTotal() * (this.getAtendente().getPercentualComissao() / 100.0); //Reflexividade
     }
 }

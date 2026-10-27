@@ -7,19 +7,12 @@ public class JogoMidiaOptica extends Jogo {
     private int quantidadeDiscos;
     private boolean possuiEncarteOriginal;
 
+    // Default
     public JogoMidiaOptica() {
         super();
         this.tipoDisco = "Blu-Ray";
         this.quantidadeDiscos = 1;
         this.possuiEncarteOriginal = true;
-    }
-
-    public JogoMidiaOptica(int codigo, String titulo, String genero, String plataforma, double valorDiaria,
-            String tipoDisco, int quantidadeDiscos, boolean possuiEncarteOriginal) {
-        super();
-        this.tipoDisco = tipoDisco;
-        this.quantidadeDiscos = quantidadeDiscos;
-        this.possuiEncarteOriginal = possuiEncarteOriginal;
     }
 
     public String getTipoDisco() {
@@ -46,22 +39,15 @@ public class JogoMidiaOptica extends Jogo {
         this.possuiEncarteOriginal = possuiEncarteOriginal;
     }
 
-    // Na mídia óptica, a multa por dia de atraso equivale a 50% da diária + R$ 1,50 por disco da caixa
+    // Sobrescrita
     @Override
     public double calcularMultaPorDia() {
         return (this.getValorDiaria() * 0.50) + (this.quantidadeDiscos * 1.50);
     }
 
+    // Sobrescrita
     @Override
     public String obterTipoMidia() {
         return "Midia Optica";
-    }
-
-    @Override
-    public String exibirResumo() {
-        return super.exibirResumo()
-                + " | Disco: " + this.tipoDisco
-                + " (" + this.quantidadeDiscos + " un.)"
-                + " | Encarte Original: " + (this.possuiEncarteOriginal ? "Sim" : "Nao");
     }
 }
