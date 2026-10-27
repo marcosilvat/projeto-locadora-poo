@@ -75,11 +75,21 @@ public class Locacao {
         return this.diasAtraso * this.getJogo().calcularMultaPorDia(); //Reflexividade
     }
 
+    //Sobrecarga
     public double calcularValorTotal() {
         if (this.jogo == null) {
             return 0.0;
         }
         return this.getJogo().calcularValorBase(this.diasLocados) + this.calcularValorMulta(); //Reflexividade
+    }
+
+    //Sobrecarga
+    public double calcularValorTotal(double percentualDesconto) {
+        double totalBruto = this.calcularValorTotal();
+        if (percentualDesconto <= 0.0) {
+            return totalBruto;
+        }
+        return totalBruto - (totalBruto * (percentualDesconto / 100.0));
     }
 
     public double calcularComissaoAtendente() {

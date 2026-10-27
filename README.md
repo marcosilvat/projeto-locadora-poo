@@ -22,8 +22,9 @@ O projeto gerencia uma **Locadora Física de Jogos Eletrônicos**, permitindo a 
 4. **Herança ("É um tipo de...") com 3 classes-filhas em `Jogo` e 3 atributos próprios em cada filha**:
    - `JogoMidiaOptica`, `JogoCartucho` e `JogoEdicaoColecionador` estendem `Jogo`.
    - `Cliente` e `Atendente` estendem `Pessoa`.
-5. **Polimorfismo (`// Sobrescrita` + `@Override`)**:
-   - Os métodos `calcularMultaPorDia()` e `obterTipoMidia()` são sobrescritos especificamente para cada mídia física, e `obterTipoPessoa()` é sobrescrito em `Cliente` e `Atendente`.
+5. **Polimorfismo (`// Sobrescrita` e `//Sobrecarga`)**:
+   - **Sobrescrita (`// Sobrescrita` + `@Override`)**: Os métodos `calcularMultaPorDia()` e `obterTipoMidia()` são sobrescritos especificamente para cada mídia física, e `obterTipoPessoa()` é sobrescrito em `Cliente` e `Atendente`.
+   - **Sobrecarga (`//Sobrecarga`)**: Métodos comuns sobrecarregados em `Jogo` (`calcularValorBase(int dias)` e `calcularValorBase(int dias, double descontoReais)`) e em `Locacao` (`calcularValorTotal()` e `calcularValorTotal(double percentualDesconto)`), mantendo todos os construtores padrão vazios `()`.
 6. **Interface (`interface`)**:
    - `Calculavel` define o contrato `calcularMultaPorDia()` e `calcularValorBase(int dias)`.
 7. **Composição, Associação e Reflexividade (`//Reflexividade`)**:

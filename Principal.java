@@ -329,6 +329,7 @@ public class Principal {
                 + " | Genero: " + j.getGenero()
                 + " | Plataforma: " + j.getPlataforma()
                 + " | Diaria: R$ " + String.format("%.2f", j.getValorDiaria())
+                + " | Pacote 3 Dias (c/ R$ 5,00 desc.): R$ " + String.format("%.2f", j.calcularValorBase(3, 5.00))
                 + " | Multa/Dia Atraso: R$ " + String.format("%.2f", j.calcularMultaPorDia()));
 
         if (j instanceof JogoMidiaOptica) {
@@ -361,6 +362,7 @@ public class Principal {
         System.out.println("  Valor Diarias: R$ " + String.format("%.2f", valorDiarias)
                 + " | Multa por Atraso: R$ " + String.format("%.2f", loc.calcularValorMulta())
                 + " | VALOR TOTAL: R$ " + String.format("%.2f", loc.calcularValorTotal())
+                + " | Total c/ 10% Desc. Fidelidade: R$ " + String.format("%.2f", loc.calcularValorTotal(10.0))
                 + " | Comissao Atendente: R$ " + String.format("%.2f", loc.calcularComissaoAtendente()));
     }
 

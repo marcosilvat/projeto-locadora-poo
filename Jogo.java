@@ -67,6 +67,15 @@ public abstract class Jogo implements Calculavel {
         return this.valorDiaria * dias;
     }
 
+    //Sobrecarga
+    public double calcularValorBase(int dias, double descontoReais) {
+        double base = this.calcularValorBase(dias);
+        if (descontoReais <= 0.0 || descontoReais >= base) {
+            return base;
+        }
+        return base - descontoReais;
+    }
+
     public abstract double calcularMultaPorDia();
 
     public abstract String obterTipoMidia();
